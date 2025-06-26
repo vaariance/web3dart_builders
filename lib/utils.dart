@@ -1,8 +1,8 @@
 import 'package:code_builder/code_builder.dart' hide FunctionType;
-import 'package:web3dart/contracts.dart';
-
+import 'package:web3dart/web3dart.dart';
 
 const package = 'package:web3dart/web3dart.dart';
+const addressRef = 'package:web3_signers/web3_signers.dart';
 
 TypeReference referType(String name, [String? uri]) {
   return TypeReference((b) => b
@@ -19,7 +19,7 @@ final dynamicType = referType('dynamic', 'dart:core');
 final listType = listify(dynamicType);
 
 final web3Client = referType('Web3Client', package);
-final ethereumAddress = referType('EthereumAddress', package);
+final ethereumAddress = referType('Address', addressRef);
 final blockNum = referType('BlockNum', package);
 final credentials = referType('Credentials', package);
 final contractAbi = referType('ContractAbi', package);
@@ -39,11 +39,11 @@ final mutabilities = {
 
 final functionTypes = {
   ContractFunctionType.function:
-  refer('ContractFunctionType.function', package),
+      refer('ContractFunctionType.function', package),
   ContractFunctionType.fallback:
-  refer('ContractFunctionType.fallback', package),
+      refer('ContractFunctionType.fallback', package),
   ContractFunctionType.constructor:
-  refer('ContractFunctionType.constructor', package),
+      refer('ContractFunctionType.constructor', package),
 };
 
 Reference futurize(Reference r) {
